@@ -14,7 +14,9 @@ export default class Cube extends BaseThreeObj {
     this.mat = new THREE.MeshBasicMaterial({
       color: 0x16a085,
       side: THREE.DoubleSide,
-      wireframe: true
+      wireframe: true,
+      opacity: 0.8,
+      transparent : true
     });
 
     this.active = true;
