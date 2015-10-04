@@ -33,7 +33,7 @@ export default class Audio {
       this.sepValue);
 
     // Make average of frenquency array entries
-    for (let i = 0; i < frequencyArray.length - 120; i++) {
+    for (let i = 0; i < frequencyArray.length - 100; i++) {
       let average = 0;
 
       for (let j = 0; j < frequencyArray[i].length; j++) {

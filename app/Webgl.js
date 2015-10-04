@@ -1,6 +1,9 @@
 'use strict';
 
+import Sphere from './objects/Sphere';
 import Plane from './objects/Plane';
+import Cube from './objects/Cube';
+import Ring from './objects/Ring';
 import THREE from 'three';
 
 window.THREE = THREE;
@@ -12,12 +15,13 @@ export default class Webgl {
   constructor(width, height, audio) {
     this.audio = audio;
 
+
+
     this.scene = new THREE.Scene();
 
     this.camera = new THREE.PerspectiveCamera(50, width / height, 1, 1000);
     this.camera.position.z = 100;
     this.camera.lookAt(new THREE.Vector3(0, 0, 0))
-
 
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize(width, height);
@@ -28,11 +32,28 @@ export default class Webgl {
     this.composer.setSize(width, height);
     this.initPostprocessing();
 
-    this.controls = new OrbitControls(this.camera);
+    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
     this.plane = new Plane();
     this.plane.position.set(0, 0, 0);
     this.scene.add(this.plane);
+
+    this.cube = new Cube();
+    this.cube.position.set(0, 0, 0);
+    this.scene.add(this.cube);
+
+    this.sphere = new Sphere();
+    this.sphere.position.set(0, 0, 0);
+    this.scene.add(this.sphere);
+
+    this.ring = new Ring();
+    this.ring.position.set(0, 0, 0);
+    this.scene.add(this.ring);
+
+    this.ring.removeMesh();
+    this.cube.removeMesh();
+    this.plane.removeMesh();
+
   }
 
   initPostprocessing() {
@@ -63,6 +84,15 @@ export default class Webgl {
       this.renderer.render(this.scene, this.camera);
     }
 
-    this.plane.update(this.audio.getAudioData());
+    let audiData = this.audio.getAudioData();
+
+    if(this.plane.active)
+      this.plane.update(audiData);
+    if(this.sphere.active)
+      this.sphere.update(audiData);
+    if(this.cube.active)
+      this.cube.update(audiData);
+    if(this.ring)
+      this.ring.update(audiData);
   }
 }

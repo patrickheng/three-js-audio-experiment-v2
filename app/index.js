@@ -23,21 +23,31 @@ domready(() => {
 
   // GUI settings
   gui = new dat.GUI();
+
+  let sphereFolder = gui.addFolder('Sphere');
+  let cubeFolder = gui.addFolder('Cube');
+  let ringFolder = gui.addFolder('Ring');
+  let planeFolder = gui.addFolder('Plane');
+
   gui.add(webgl, 'usePostprocessing');
-  gui.addColor(webgl.plane.mat, 'color').onChange( function( colorValue  )
-    {
-      //create a Color
-      //let newColor = rgbToHex(colorValue);
-      let newColor = 0xCDDC39;
-      let colorObject = new THREE.Color( newColor ) ;
 
+  sphereFolder.add(webgl.sphere, 'active').onChange(function(value) {
+    webgl.sphere.toggleMesh();
+  });
+  cubeFolder.add(webgl.cube, 'active').onChange(function(value) {
+    webgl.cube.toggleMesh();
+  });
+  ringFolder.add(webgl.ring, 'active').onChange(function(value) {
+    webgl.ring.toggleMesh();
+  });
+  planeFolder.add(webgl.plane, 'active').onChange(function(value) {
+    webgl.plane.toggleMesh();
+  });
 
-      //set the color in the object
-      webgl.plane.mat.color = colorObject;
-      console.log('colorValue', colorValue)
-      console.log('colorObject', colorObject)
-    });
-
+  sphereFolder.open();
+  cubeFolder.open();
+  ringFolder.open();
+  planeFolder.open();
 
   //Stats js
   stats = new Stats();
@@ -71,12 +81,12 @@ function animate() {
 }
 
 function rgbToHex(color) {
-    let hex = {
-      r : (parseInt(color.r)+0x10000).toString(16).substr(-2).toUpperCase(),
-      g : (parseInt(color.g)+0x10000).toString(16).substr(-2).toUpperCase(),
-      b : (parseInt(color.b)+0x10000).toString(16).substr(-2).toUpperCase()
-    }
-    let newColor = "0x" + hex.r + hex.g + hex.b;
-    console.log('newColor', newColor)
-    return newColor;
+  let hex = {
+    r: (parseInt(color.r) + 0x10000).toString(16).substr(-2).toUpperCase(),
+    g: (parseInt(color.g) + 0x10000).toString(16).substr(-2).toUpperCase(),
+    b: (parseInt(color.b) + 0x10000).toString(16).substr(-2).toUpperCase()
+  }
+  let newColor = "0x" + hex.r + hex.g + hex.b;
+  console.log('newColor', newColor)
+  return newColor;
 }

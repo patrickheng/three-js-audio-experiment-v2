@@ -1,23 +1,34 @@
 'use strict';
 
 import THREE from 'three';
+import BaseThreeObj from './BaseThreeObj.js';
 
-export default class Cube extends THREE.Object3D {
+export default class Cube extends BaseThreeObj {
   constructor() {
     super();
 
-    this.geom = new THREE.BoxGeometry(10, 10, 10);
+    this.initialGeomVertices = [];
+
+    this.geom = new THREE.CubeGeometry(30, 30, 30, 5, 5, 5);
+
     this.mat = new THREE.MeshBasicMaterial({
-      color: 0x00ff00,
+      color: 0x16a085,
+      side: THREE.DoubleSide,
       wireframe: true
     });
-    this.mesh = new THREE.Mesh(this.geom, this.mat);
 
-    this.add(this.mesh);
+    this.active = true;
+    this.addMesh();
+    this.saveVertices();
   }
 
-  update() {
-    this.rotation.x += 0.01;
-    this.rotation.z += 0.01;
+  update(audioData) {
+    for (let i = 0; i < this.mesh.geometry.vertices.length; i++) {
+
+      this.mesh.geometry.vertices[i].x = this.initialGeomVertices[i].x * (audioData[i] / 100);
+      this.mesh.geometry.vertices[i].y = -this.initialGeomVertices[i].y * (audioData[i] / 100);
+      this.mesh.geometry.vertices[i].z = this.initialGeomVertices[i].z * (audioData[i] / 100);
+    }
+    this.mesh.geometry.verticesNeedUpdate = true;
   }
 }
