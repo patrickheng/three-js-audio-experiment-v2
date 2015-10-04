@@ -22,4 +22,6 @@ npm start
 npm run build
 ```
 
+(http://lab.hengpatrick.fr/three-js-audio-experiement-2/preview.png)
+
 Hope you like it ! <3
