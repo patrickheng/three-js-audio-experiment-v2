@@ -1,4 +1,6 @@
 .DS_Store
 build/main.js
 node_modules
+app/audio/foals.mp3
+app/audio/lookbook.mp3
 *.log
