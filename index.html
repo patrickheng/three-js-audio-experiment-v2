@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Awesome Experiment</title>
+  <style>
+    body, html {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="myAudio" src="app/audio/foals.mp3" loop></audio>
+
+  <script src="./build/main.js"></script>
+  <script src="./build/vendors/wagner/Wagner.js"></script>
+  <script src="./build/vendors/wagner/Wagner.base.js"></script>
+  <script>
+    // configure Wagner
+    WAGNER.vertexShadersPath = './build/vendors/wagner/vertex-shaders/';
+    WAGNER.fragmentShadersPath = './build/vendors/wagner/fragment-shaders/';
+  </script>
+</body>
+</html>

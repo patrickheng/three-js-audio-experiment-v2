@@ -1,0 +1,31 @@
+{
+  "name": "threejs-audio",
+  "version": "1.0.0",
+  "description": "Little exercise using three js and audio html 5 api",
+  "main": "build/main.js",
+  "scripts": {
+    "start": "npm run dev:script & npm run dev:server",
+    "dev:script": "watchify -t babelify app/index.js -o build/main.js",
+    "dev:server": "browser-sync start --server --files './' --port 3000 --no-ui",
+    "build": "browserify -t babelify -t stripify app/index.js | uglifyjs -o build/main.js"
+  },
+  "author": "HENG Patrick",
+  "license": "ISC",
+  "dependencies": {
+    "dat-gui": "^0.5.0",
+    "domready": "^1.0.8",
+    "gsap": "^1.17.0",
+    "raf": "^3.0.0",
+    "stats-js": "^1.0.0-alpha1",
+    "three": "^0.71.0",
+    "three-orbit-controls": "^71.0.0"
+  },
+  "devDependencies": {
+    "babelify": "^6.1.2",
+    "browser-sync": "^2.7.5",
+    "browserify": "^10.2.1",
+    "stripify": "^3.0.0",
+    "uglifyjs": "^2.4.10",
+    "watchify": "^3.2.1"
+  }
+}
