@@ -5,6 +5,9 @@ Little experiement using three js + audio html5 api.
 Written in ES2015.
 
 
+Demo available [here](http://lab.hengpatrick.fr/three-js-audio-experiment-2/).
+
+
 ![Image of Yaktocat](http://lab.hengpatrick.fr/three-js-audio-experiement-2/preview.png)
 
 
