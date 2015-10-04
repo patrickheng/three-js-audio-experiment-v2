@@ -1,15 +1,62 @@
 body,
 html
 {
+    position : relative;
     overflow: hidden;
 
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
-
 }
 
-canvas {
+canvas
+{
     cursor: move;
+}
+
+p
+{
+    font-size: .8em;
+
+    color: white;
+}
+
+.mention
+{
+    position: absolute;
+    right: 25px;
+    bottom: 30px;
+    animation : fadeInLeft 1s ease-out;
+}
+
+.credits
+{
+    position: absolute;
+    right: 25px;
+    bottom: 10px;
+    animation : fadeInLeft 1s ease-out 0.5s backwards;
+}
+
+a
+{
+    transition: all .3s ease;
+    text-decoration: none;
+
+    color: #e74c3c;
+}
+a:hover
+{
+    color: #c0392b;
+}
+
+@keyframes fadeInLeft {
+    0%{
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0%);
+  }
 }

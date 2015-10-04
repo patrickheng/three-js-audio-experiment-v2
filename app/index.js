@@ -55,9 +55,8 @@ domready(() => {
 
   // Align top-left
   stats.domElement.style.position = 'absolute';
-  stats.domElement.style.left = '50%';
+  stats.domElement.style.left = '0px';
   stats.domElement.style.top = '0px';
-  stats.domElement.style.transform = 'translate(-50%)';
 
   document.body.appendChild(stats.domElement);
 

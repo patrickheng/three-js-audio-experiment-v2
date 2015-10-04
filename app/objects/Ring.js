@@ -22,6 +22,14 @@ export default class Ring extends BaseThreeObj {
     this.saveVertices();
   }
 
+  addMesh() {
+    this.mesh = new THREE.Mesh(this.geom, this.mat);
+    this.mesh.position.y = -10;
+    this.mesh.rotation.x =  1.5;
+    this.add(this.mesh);
+    this.active = true;
+  }
+
   update(audioData) {
     for (let i = 0; i < this.mesh.geometry.vertices.length; i++) {
 
@@ -30,5 +38,6 @@ export default class Ring extends BaseThreeObj {
       this.mesh.geometry.vertices[i].z = this.initialGeomVertices[i].z * (audioData[i] / 100);
     }
     this.mesh.geometry.verticesNeedUpdate = true;
+    this.rotation.y += 0.005;
   }
 }

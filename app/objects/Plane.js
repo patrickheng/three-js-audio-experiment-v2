@@ -31,5 +31,6 @@ export default class Plane extends BaseThreeObj {
       this.mesh.geometry.vertices[i].z = this.initialGeomVertices[i].z * (audioData[i] / 100);
     }
     this.mesh.geometry.verticesNeedUpdate = true;
+    this.rotation.y -= 0.005;
   }
 }

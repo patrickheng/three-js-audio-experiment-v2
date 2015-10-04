@@ -9,14 +9,14 @@ export default class Sphere extends BaseThreeObj {
 
     this.initialGeomVertices = [];
 
-    this.geom = new THREE.SphereGeometry(50, 40, 40);
+    this.geom = new THREE.SphereGeometry(60, 40, 40);
 
     this.mat = new THREE.MeshBasicMaterial({
       color: 0xFF5252,
       side: THREE.DoubleSide,
       wireframe: true
     });
-    
+
     this.active = true;
     this.addMesh();
     this.saveVertices();
